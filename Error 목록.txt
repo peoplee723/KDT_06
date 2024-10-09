@@ -1,0 +1,25 @@
+Error 목록
+
+SyntaxError: unexpected EOF(end of file) while parsing(문장분석)
+-> 문법오류
+IndentationError: expected an indented block
+-> 들여쓰기 오류(indent->들여쓰다)
+ValueError: invalid literal for int() with base 10: 'hello world'
+->값 오류(int안에 있는 값이 int로 변환 안됨->숫자라도 type이 str인 경우 나올 수 있음                      
+
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+->data2=data1.copy() 를 사용해라
+
+ypeerror: 'builtin_function_or_method' object is not subscriptable
+->builtin_function_or_method=대괄호([]), 대괄호 잘못 사용할때 나옴
+
+The least populated class in y has only 1 member, which is too few. The minimum number of groups for any class cannot be less than 2.
+-> train_test_split 함수에서 피쳐가 1개일때 stratify를 설정하면 나오는 오류
+	(stratify-> 여러 피쳐를 고려할때 비율에 맞게 데이터를 분포시키는 함수
+
+TypeError: 'dict_keys' object is not subscriptable
+-> obj가 인덱싱/슬라이싱 안된다는 뜻
+
+ValueError: If using all scalar values, you must pass an index
+-> 단일값(scaler) 는 데이터프레임 만들레 리스트로 덮기
