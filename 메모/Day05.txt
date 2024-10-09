@@ -1,0 +1,124 @@
+Day05
+
+자연어 전처리 + 학습 과정
+
+데이터 토큰화 -> 수치화 -> 패딩 ->임베딩(차원 축소) -> 모델 선택하여 훈련
+
+- 토큰화 전후로 불용어 정제 필요!
+
+
+모델링
+- 양방향 다층 신경망
+input_size=128, num_layers=3, batch_size=4, seqeunce_len=6
+
+h0= torch.rand(층수*(양방향+1), 배치크기, 아웃풋 크기)
+-> 순환 신경망이기 떄문에 초기 은닉값 필요
+=> 모델 훈련시 인풋+ 은닉값 넣어야 하고 -> 결과_은닉값이 도출됨
+output_shape -> (배치크기, 시퀀스 크기, 셀 결과값(양방향이므로 output*2))
+hidden_shape -> (시퀀스크기, 배치크기, 셀 결과 은닉값(셀당 1개))
+
+
+-LSTM (장단기 메모리)
+proj_size 제외하고 RNN과 동일
+- proj_size (투사층)
+
+
+전이학습시 임베딩 층이 이미 형성되어있음
+-> nn.embedding.from.pretrained()
+
+
+
+
+
+
+
+
+
+
+소개해준 한국어 형태소 분석기
+1. Konlpy (지도학습) -> 이미 주어진 말뭉치를 통해 형태소 분석해줌 
+				(토큰화 기능은 없음)
+from Konlpy.tag import *
+- Hannanum
+- KKma
+- Komoran
+- Okt
+    (사용법은 동일)
+=> .pos(품사태깅), .nouns(명사 태깅), .morphs(형태소 태깅)
+
+2. soynlp (비지도학습) -> 학습을 통해 형태소 분석, 신조어 및 새로운 단어에 용이
+
+하나의 단어를 끊었을때 그다음에 나올 단어 예측
+from soynlp.word import WordExtractor
+- WordExtractor() 인스턴스 생성+ 학습( .train)
+- .extract() 단어 추출
+	=> 학습을 통해 cohension, branching entropy, accsessor variety를 기준으로 점수 도출
+			(   확률누적곱, 낮을수록 예측쉬움, 다음에 나올 글자종류)
+	=> 단어와, 각 기준에 따른 점수튜플을 도출
+from soynlp.tokenizer import *
+- 단어: 기준 점수 기준으로 점수 추출
+socres= {word:score.cohesion_forward for word, score in result.items()}
+- tokenizer=LTokenizer(score=scores) 생성한 점수를 기준으로 토큰화 인스턴스 생성
+- tokeninzer.tokenize(문장) 학습된 인스턴스를 통해 문장 토큰화
+
+
+3. spacy -> 미리 훈련된 모델을 통해 형태소 분석 및 토큰화
+import spacy
+- 설치한 모델을 통해 인스턴스 생성
+nlp= spacy.load(설치한 모듈->'ko_core_news_lg')
+- 형태소 분석+ 토큰화
+doc= nlp(문장)
+	=> 단어(토큰)와 품사, 불용어 여부 등을 메서드를 통해 추출 가능
+	=> is_stop 불용어 필터링???
+
+--------------------------------------------------------------------------------------
+scikit-learn 함수
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+CountVectorizer-> fit, transform 을 통해 단어사전 생성 및 문장 수치화 해줌
+
+CountVectorizer().vocabulary_를 통해 생성된 단어사전과 빈도수 확인 가능
+
+
+-------------------------------------------------------------------------------------
+데이터 전처리 및 토큰화 방법
+with pytorch
+
+1. 데이터 전처리
+단어 사전 위한 커스텀DS 생성 (수업때 만든거)
+
+2. 토큰화
+- 토큰화 인스턴스 생성
+from torchtext.data.utils import get_tokenizer
+tokenizer= get_tokenizer(Okt().morphs) -> 함수, callalble func 넣기
+- 토큰화 진행하는 함수 생성 (수업때 만든거)
+
+3. 단어사전 생성
+Vocab= build_vocab_from_iterator(iterator= 토큰화 함수, specials=[불용어, PAD])
+-불용어, PAD 인덱스 설정
+Vocab.set_default_index(Vocab['<UNK>', '<PAD>'])
+
+
+without pytorch
+
+1. 데이터 전처리
+커스텀DS 생성 (동일)
+
+2. 토큰화 -> 직접 함수를 만들어야함
+- 기본 틀
+1. DS에서 문장을 가져오기 + 원하는 전처리 (정규식 쓰면 편함...)
+re.sub('정규식', 'a', 'b')-> b에서 정규식에 속하는 것들을 찾아 a로 교체함
+
+2. 선택한 토큰화 인스턴스를 통해 토큰화 진행 -> 단어사전 생성
+(단어:인덱스번호)
+	방법1. Counter와 list comprehension을 통해 단어사전 생성
+	방법2. CounterVectorize를 통해 단어사전 생성
+ 
+++ 토큰화 전후 단어들을 보면서 어떤걸 버릴지, 어떤걸 가질지 고민
+	(한글자단어 버릴지, ㅋㅋㅋ와 같은 자음만 가진 단어 버릴지)
+	=> 리스트 컴프리헨션, 딕셔너리 컴프리헨션, 정규식 등을 활용해 제거
+
+4. 생성된 단어사전을 텍스트에 적용 (벡터화)
+5. 패딩 (모든 문장의 shape일치시키기)
+

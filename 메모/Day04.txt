@@ -1,0 +1,5 @@
+Day04 
+Word to Vector
+
+임베딩 알고리즘
+==>skip-gram, CBow, 계층적 소프트맥스, 네거티브 샘플링
