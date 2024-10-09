@@ -1,4 +1,0 @@
-data/
-git add .
-git commit -m "ignore file&folder config"
-git push origin master
