@@ -1,0 +1,15 @@
+시각화_Day01
+
+판다스를 사용하지 않고 파일 읽기, 수정, 시각화
+
+날짜 정보 분리 ->split() 분리 + 인덱싱으로 불러오기
+
+ramdom.randint(a,b) b까지 포함!
+
+plt.rc , plt.rcParams -> 같은 의미(원하는 거 사용)
+
+weather_df['날짜]. dt. year==2023
+(datetime객체 접근-> dt.year/month/day)
+날짜컬럼 datetime타입의 year->2023일 경우
+
+데이터 불러오기 ->컬럼 변경-> 결측지 제거, 날짜 타입 변경, 특정 기간 데이터 꺼내오기, 평균계산
