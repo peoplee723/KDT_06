@@ -1,6 +1,0 @@
-SQL Day01
-
-mysql use 접근 후 create user 사용 가능 
-
-auto_increment ->데이터 추가할때 따로 입력안해도 자동으로 추가됨 
-(기본키인 경우에도 null할당하거나 생략 가능)
