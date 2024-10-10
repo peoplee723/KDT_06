@@ -1,4 +1,6 @@
 NLP/Day05/ex_text.ipynb
 bfg.jar
-Pytorch\data
-Pytorch\models
+Pytorch/data
+Pytorch/models
+Pytorch/project/brfss2013.csv
+Pytorch/data/
