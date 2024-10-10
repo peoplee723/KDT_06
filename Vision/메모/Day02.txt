@@ -1,0 +1,15 @@
+Day02
+
+CNN (convolutional neural network) 합성공 신경망 (pytorch-> p.166)
+
+3차원 이미치 입력 -> 특징 추출 -> 틍징을 통해 분류
+합성곱층 (특징 추출)
+필터 개수=타겟 수
+필터 크기 -> 
+스트라이드 (이동방향)
+패딩(모서리 추출 횟수 늘리기 위해 사면 0으로 채움)-> same, valid
+
+
+- 모델 형태
+cv -> pooling -> cv->pooling.... (합성곱과 풀링 mix) 
+=> fully-connected(벡터화) =>fully-connected (분류)
