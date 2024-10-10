@@ -1,0 +1,52 @@
+Day04
+
+feature 선택 방법
+1. filtering 방법
+상관계수+ 점진적 늘리기 (성능을 평가하면서)
+
+2. wrapper 방법
+forward 방식: 임의의 기준으로 피쳐 선택-> 성능평가-> 피쳐추가
+backward방식: 모든 피쳐 선택-> 성능평가 -> 피쳐제거
+step-wide방식: forward+ backward 방식
+
+3. embeded
+모델 내부에 피쳐 선택 기능 포함된 것 ex) important_feature, 주성분분석(비지도학습)
+
+
+Tunning
+모델의 성능 높이기->  score(분류/회귀에 따라 다름)
+
+모델 성능에 영향을 미치는 매개변수(Hyper-parameter)
+KNN-> K개수
+LinearRegression-> 가중치, 기울기 초기화 값 +규제
+==> 알고리즘 마다 Hyper=parameter가 다름!
+
+피쳐 제어
+피쳐 개수 제어
+피쳐 압축/추출
+
+검증(교차검증)
+model_selection-> Kfold(회귀), StratifiedKfold(분류)
+
+
+인코딩(카테고리 feature를 코드형 숫자로 변환)
+LabelEncoder-> fit(학습)-> transform(변환) -> inverse_transform(디코딩)
+=> 숫자로 표현되어 가중치 부여 위험
+
+One-HotEncoding-> toarray()로 밀집 행렬로 변환, 나머지 동일
+=> 차원이 너무 많아짐(차원의 저주?) -> 대분류를 찾기, 
+
+전체 과정
+데이터 전처리(정제)
+피쳐 타겟 선정 및 분리, 가공(인코딩, 스케일링)
+교차검증(cross validate)-> 최적의 모델 선정(데이터 부족때문에 train과 test만 분리)
+				+train데이터로 교차검증
+모델 평가-> 점수/오차 확인(test데이터 셋으로 평가)
+		+분류/회귀에 따라 평가기준이 다름!
+		++튜닝(Hyper parameter 제어)-> 모델 생성시 매개변수로 설정-> 반복
+예측
+
+반복문으로 할시 (튜닝)-> 교차검증 반복
+
+################### 쉼표, 콤마 주의!!!!!!!!!!!!!!!!!!!!!!!
++클래스는 대문자로 시작

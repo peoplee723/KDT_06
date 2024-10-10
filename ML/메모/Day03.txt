@@ -1,0 +1,44 @@
+Day03
+
+
+scikit-learn 패키지 공통점
+
+모델 객체 생성-> fit()을 통해 학습진행
+
+스케일러-> fit()=> 수치 값 범위 설정위한 준비-> transform()
+(fit과정이 조금씩 다름)
+ex) MinMaxScaler
+X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
+X_scaled = X_std * (max - min) + min
+fit()을 통해 계산에 필요한 수를 구함 
+=> transform을 통해 핏에서 구한 수를 바탕으로 데이터 변환
+
+
+MSE(mean squared error)- 평균제곱오차
+=> 차이 제곱의 평균
+
+
+
+선형 회귀(Linear Regression)
+숫자를 가지고 규칙을 찾아 공식 만들기
+만들어진 공식을 바탕으로 예측
+(공식만 만들면 피쳐를 바탕으로 타겟 예측 가능)
+-> coef_, intercept_
+
+score-> 결정계수 도출(MSE의 계산식으로 만듦) , 0~1사이
+			(KNN 분류의 경우 평균 적중률 도출)
+
+훈련용 데이터도 테스트해서 과대적합 여부 확인+ 성능을 올릴 방법을 고민해보기!
+
+연비예측-> 회귀(선형회귀)
+
+
+
+furiosa ai 
+
+solution architect-> 고객지원, 고객 맞춤 최적화, 등등
+기존 GPU-> 인공지능 연산에 한계 존재=> NPU(AI가속 반도체) 등장
+
+quantization(양자화)-> 실수를 정수로(속도)
+
+
