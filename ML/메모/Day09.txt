@@ -1,0 +1,20 @@
+Day08
+
+파이썬으로 처리할때
+=> 1. 숫자로 바꿔서 할수는 없는지 확인하기
+=> 2. 함수 확인 (카운트, ord, chr....)
+
+
+
+ML 모델
+
+Linear -> 선형 회귀, DT, 
+
+
+데이터 전처리
+STudy hour -> nan은 0, 음수는 제거
+출석률-> 음수,100초과값 제거
+previous 점수-> 100초과값 제거, nan-> 중앙값으로
+Participation extra-> nan 값 no로 변경
+prarent Education level-> 중졸이하로 변경
+passed-> nan 값 제거
