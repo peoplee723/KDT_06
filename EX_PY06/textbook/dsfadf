@@ -1,0 +1,7 @@
+x=input().split()
+print(x,type(x))
+#['python'] <class 'list'>
+y=str(x)
+z=list(map(str,y))
+print(z,type(z))
+#<map object at 0x0000022CB8923F40> <class 'map'>

@@ -1,0 +1,39 @@
+Day14
+
+boolean index 여러 조건 줄 때 각 조건 ()로 묶어줘야 함!
+
+
+read.csv(} ->nrow (몇출만 뽑기
+		->usecols(특정 칼럼만 뽑기
+판다스로 데이터를 읽기전
+데이터를 직접 열어봐서 어떤 식으로 처리할지 생각하기
+(구조, 빈 값, 통계, 단위.....)
+
+평균, 합, 최빈, 중앙..... 등 통계메서드들 
+numeric_only=False(기본값)  
+
+Boolean indexing
+df[ 조건]   (데이터 프레임 안에 조건 삽입 가능)
+단, 조건이 여러개인 경우 각 조건을 괄호에 묶고 &(and), | (or), ~(not) 연산자 사용
+---> 자주쓰는 조건은 변수에 저장하기
+
+
+중복 처리 함수 duplicated
+
+duplicated(keep=) 중복 데이터 검사 ->> keep=first(기본값), last, False 를 통해 어떤 데이터를 중복으로 취급할지 결정 가능
+			=> True: 중복으로 처리된 데이터
+drop_dulicated(keep=) 중복으로 확인된 데이터 삭제
+				(subset=특정 칼럼만 검사
+
+
+결측치 처리
+
+isna, isnull -> 결측치 처리하는 메서드
+
+-처리방법-
+1. 삭제
+dropna() axis=0(기본)->행방향으로 데이터 삭제, how=any(기본값)->하나라도 결측치가 있으면 삭제
+				->thresh=int(지정 개수 미만이면 삭제), subset=특정 컬럼만 검사(삭제는 axis에 근거)
+
+2. 대체
+ffill

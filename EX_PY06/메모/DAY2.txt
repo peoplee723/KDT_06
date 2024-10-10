@@ -1,0 +1,45 @@
+DAY2
+
+같은 목적을 가진 함수를 묶어놓음- 모듈, 패키지
+bulit in function=기본 함수
+
+서식지정자 방식=>%d %()   (,필요없음)
+f-string =>f '{}{}{}'   ->(format 문자열)            ->str형태로 결론 도출
+매개변수
+def print(
+    *values: object,
+    sep: str | None = " ",
+    end: str | None = "\n",
+
+sep ->여러게 프린트 할 때 데이터 사이에 (기본값=공백)을 추가함 
+end -> 출력 끝에 (기본값=줄바꿈 문자) 추가함
+
+utf-8, 
+수치->{정수=int(integer), 실수=float,}
+문자=str(string),
+True, False(논리)
+
+Data Type
+int, float, chr 등 자동 또는 수동적 형변환
+4.5 -> int ->4
+4 -> float ->4.0(데이터 손실)
+type() 타입 반환
+
+내가 사용하고자 하는 데이터를 임의로 모은 것=>객체 지향 언어?
+ex) 학생 이름, 학년, 성별, 생년월일 ..... =>학생 데이터
+in 프로그램=> 학생 class
+정수=>class=int
+실제 메모리(힙)에 저장 된 데이터=객체
+
+연산자
+
+==같다, !=같지 않다(True, False)
+데이터 타입이 다르면 == ->TRue?
+
+논리연산
+0, "" (없다)->False                    
+있다(공백포함) -> True
+때문에 not 0 또는 not "" ->True 
+
+문자를 넣을 떄 ''넣는거 잊지 말기!
+# print(1,'\n'2'\n',3) ->문법 오류 ???(문자는 가능)                                                                 

@@ -1,0 +1,35 @@
+Day18
+
+api reference -> []안에 있는 건 옵션
+Matplotlib->  가변인자의 경우 일일이 찾아서 확인해야함
+
+matplotlib ->그래프에 적용하는 기본 폰트가 클래스 형태로 저장되어 있음
+
+
+plt.figure() ---->그래프 지정 ===> figsize[num, num]			+fontsize, fontstyle, weight 등 각각 출력하는 함수에 지정 가능
+plt.plot()   ---->그래프 그리기 ==> xdata, ydata, fmf(marker color line)
+x, ylim ----> 눈금 범위 지정 ===>x-> left=, right=, y-> top=, bottom
+x, yticks ----> 눈금 값 출력 지정 ====>rotation= vertical/horizontal 또는 각도 지정		
+						=>[*nums], [*names]  -->nums와 lim으로 간격 조정, names로 눈금 값 지정 가능
+
+fig.subplot(행,열) 한 figure안에 행*열만큼 subplot 생성 
+여러 그래프 그릴때
+
+멀티인덱스 --> 인덱스 값을 리스트로 변환후 변수에 저장 ---> enumerate 함수를 반복문으로 사용
+
+
+
+# __init__.py 명으로 파일 생성 -->폴더를 패키지로 인식시키는 파일
+
+
+공공데이터 포털, kosis, kaggle, 
+https://datalab.visitkorea.or.kr/datalab/portal/main/getMainForm.do (한국관광 데이터랩)
+네이버, 구글 트렌드
+
+
+생존자 성별 비율 시각화
+나이별 생존자 성별 비율 비교 시각화(하나의 figure에)
+
+1970~2017 이동 인구수
+-> 대구 전출 인구수 분석 및 시각화
+-> 가장 많은 이동이 발생한 지역의 증감율

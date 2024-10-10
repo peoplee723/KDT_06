@@ -1,0 +1,31 @@
+Day11
+
+__name__ -> 실행중인 메인 파일 알려줌 ->자기 파일이 메인일 경우 __main__도출
+
+
+cd 이동하고 싶은 폴더명-> change directory
+
+폴더 안에 있는 모든 것 리스트로 출력: dir
+
+형식: dir 보고싶은 폴더명 또는 경로 (기본값=현재위치 폴더)
+ 	dir anaconda3
+
+출력 내용 지우기: cls
+형식: cls
+
+
+쥬피터 노트북
+
+cell -> code, markdown
+
+markdown-> 줄바꿈= 스페이스 두번+엔터or <br/>
+markdown 기능은 ppt보기 
+
+Dataframe
+
+행(raw), 렬(colunm로 구성
+
+한줄--->시리즈 , 두줄 이상 ==>dataframe
+
+pandas 
+슬라이싱 시 문자는 [시작:끝] (숫자랑 다름)+ 문자가 인덱스로 되있어도 숫자 인덱스(기본 인덱스)가 남아있음
