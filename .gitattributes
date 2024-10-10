@@ -5,3 +5,5 @@
 'File filter=lfs diff=lfs merge=lfs -text
 Vision/project/FLASK/overwatch_v1.pth' filter=lfs diff=lfs merge=lfs -text
 Vision/project/FLASK/overwatch_v2.pth' filter=lfs diff=lfs merge=lfs -text
+'*.pth' filter=lfs diff=lfs merge=lfs -text
+'*.ipynb' filter=lfs diff=lfs merge=lfs -text
