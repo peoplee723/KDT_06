@@ -1,0 +1,76 @@
+Day07
+
+
+스케쥴러 -> 성능 개선이 없을 때 조기종료
+lr_scheduler.ReduceLROnPlateau
+mode -> min(loss기준), max(score)기준
+patience -> 성능 개선 안되는거 참는 기준
+factor -> lr 줄어드는 정도 (기본=0.1)=> LR*0.1
+
+
+local host server 
+- 폴더 이동 (change directory)
+cd 폴더이름
+- 현재 위치 파일 리스트 출력
+dir
+- 명령어 화면 지우기
+cls
+===> 시작 전 폴더 위치 확인하기!!!
+-시작
+python -m http.server 8080 
+
+--overfitting 해결 시도
+1. nn.dropout()
+
+
+'age', 'weight', 'bmi', 'sleptime', 'children', 'smoker', 'smokday', 'acholPM', 'ave_drnk',
+                 'employ', 'worktime1', 'worktime2', 'exer_type', 'exer_num', 'exer_time', 'fruit', 'veg',
+                 'gen_health', 'act_limit', 'emo_support', 'caner1', 'caner2', 'chronic','hacarth',
+                 'addep', 'kidny', 'diabete'
+
+숫자가 아닌 것들 -> smoker(라벨), employ(원핫), exer_num(라벨), fruit(라벨),  veg(라벨), 
+			gen_health(라벨), caner(라벨), chronic(라벨), hacarth(라벨), addep(라벨) 
+
+
+
+범주
+yes or no
+
+'PhysicalActivities', 'HadHeartAttack', 'HadAngina', 'HadStroke', 'HadAsthma', 'HadSkinCancer', 'HadCOPD', 'HadDepressiveDisorder', 'HadKidneyDisease', 'HadArthritis', 'DeafOrHardOfHearing' , 'BlindOrVisionDifficulty',
+'DifficultyConcentrating', 'DifficultyWalking', 'DifficultyDressingBathing', 'DifficultyErrands', 'ChestScan', 'HighRiskLastYear',
+'CovidPos'
+'HadDiabetes', , 'SmokerStatus' 4가지
+
+
+
+
+
+        # <label for="q2">질문 2: 키</label><br>
+        # <textarea name="text" rows="1" colos="10" >{q2}</textarea>
+        
+        # <label for="q3">질문 3: 몸무게</label><br>
+        # <input type="text" id="q3" name="q3" required><br><br>
+
+        # <label for="q4">질문 4: 평균 수면 시간</label><br>
+        # <input type="text" id="q4" name="q4" required><br><br>
+
+        # <label for="q5">질문 5: 흡연 여부(예=1,아니요=0)</label><br>
+        # <input type="text" id="q5" name="q5" required><br><br>
+              
+        # <label for="q5">질문 6: 한달 평균 음주 횟수</label><br>
+        # <input type="text" id="q6" name="q6" required><br><br>
+
+        # <label for="q7">질문 7: 하루 평균 과일 섭취 횟수</label><br>
+        # <input type="text" id="q7" name="q7" required><br><br>
+
+        # <label for="q8">질문 8: 하루 평균 채소 섭취 횟수</label><br>
+        # <input type="text" id="q8" name="q8" required><br><br>  
+
+
+q1 = form.getvalue("q1", default="")
+q2 = form.getvalue("q2", default="")
+q3 = form.getvalue("q3", default="")
+q4 = form.getvalue("q4", default="")
+q5 = form.getvalue("q5", default="")
+q6 = form.getvalue("q6", default="")
+q7 = form.getvalue("q7", default="")

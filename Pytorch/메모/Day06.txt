@@ -1,0 +1,16 @@
+Day06
+
+shape 문제
+
+reg
+-score
+ taget.reshape(-1,1) 나머지 동일
+
+multiclass
+- loss
+ target.reshape(-1).long()
+- score
+ target.reshape(-1)
+
+bin
+없음
