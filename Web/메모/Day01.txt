@@ -1,0 +1,46 @@
+Day01
+
+css selector?
+
+html 기본 형태
+<head>..... </head>
+open -> 	close
+
+open 태그에는 속성 넣을 수 있음
+(태그마다 가지고 있는 속성 상이)
+
+html 튜토리얼
+https://www.w3schools.com/ 
+https://www.tcpschool.com/html/intro
+
+- 기본 구조
+html
+-> 문서의 시작과 끝
+	+meta
+	-> 문서에 대한 정보 정의
+title
+-> 문서의 제목 지정 (중복되면 검색 엔진 노출 시 불이익)
+body
+-> 웹에 노출되는 내용
+
+
+-특징
+블록 요소 (인라인 요소)
+-> a, span 등 사용할 때 마다 줄마꿈
+부모,자식,형제
+	부모- 자식: 직전 들여쓰기 관계인 태그
+	형제: 같은 부모 가진 태그
+-> 이런 관계의 가독성을 높이기 위해 들여쓰기 사용함
+
+속성
+-> 태그마다 사용할 수 있는 속성 상이 + 없는 속성 적어도 오류가 나지 않음
+-> 부모가 가진 속성은 자식도 영향을 받음 (가장 가까운 부모를 따름)
+
+
+
+알아본 태그들
+head, body, title, h1, img, ol(order list), ul(unorder list), a, dl(description list),
+strong, input, label, 
+
+------------------------------------------------------------------------------------------
+웹 기반 프레임워크 -> django, flask

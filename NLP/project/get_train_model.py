@@ -10,16 +10,19 @@ import pandas as pd
 import torch.optim.lr_scheduler as lr_scheduler
 
 
-def model_training(model, trainDL, testDL, optimizer, epoch: int, LIMIT: int, break_param: Literal['score', 'loss'],
+def model_training(model, trainDL, testDL, optimizer, device, epoch: int, LIMIT: int, break_param: Literal['score', 'loss'],
                    type: Literal['reg', 'binary', 'muticlass'],optim_type: Literal['score', 'loss'], SAVE_PATH, SAVE_FILE,
                    save_type: Literal['all', 'param', 'None'], numcls: int):
     '''
-    학습진행+ 모니터링+ 최적의 결과 저장
-    type= 'reg'|'binary'|'mclf'
+    학습진행+ 모니터링+ 최적의 결과 저장\n
+    type= 'reg'|'binary'|'mclf'  \n
     return: LOSS_HISTORY, SCORE_HISTORY
     '''
-    scheduler= lr_scheduler.ReduceLROnPlateau(optimizer, patience=LIMIT, mode='max')
-    EPOCH=100
+    #스케쥴러 옵션 설정
+    if optim_type== 'score':
+        scheduler= lr_scheduler.ReduceLROnPlateau(optimizer, patience=LIMIT, mode='max')
+    else: scheduler= lr_scheduler.ReduceLROnPlateau(optimizer, patience=LIMIT, mode='min')
+    EPOCH=epoch
     # 손실, 평가값 저장
     LOSS_HISTORY, SCORE_HISTORY= [[],[]], [[],[]]
     for ep in range(EPOCH):
@@ -30,18 +33,19 @@ def model_training(model, trainDL, testDL, optimizer, epoch: int, LIMIT: int, br
 
         for train_feature, train_target in trainDL:
             # 학습
+            train_feature.to(device); train_target.to(device)
             pre_y=model(train_feature)
 
             # 손실
             if type=='reg':
-                Lossfunc=MeanSquaredError()
-                Scorefunc=R2Score()
+                Lossfunc=MeanSquaredError().to(device)
+                Scorefunc=R2Score().to(device)
             elif type=='binary':
-                Lossfunc= nn.BCELoss()
-                Scorefunc=F1Score(task='binary', num_classes=numcls)
+                Lossfunc= nn.BCELoss().to(device)
+                Scorefunc=F1Score(task='binary', num_classes=numcls).to(device)
             elif type=='muticlass':
-                Lossfunc=nn.CrossEntropyLoss()
-                Scorefunc=F1Score(task='multiclass', num_classes=numcls)
+                Lossfunc=nn.CrossEntropyLoss().to(device)
+                Scorefunc=F1Score(task='multiclass', num_classes=numcls).to(device)
 
             loss= Lossfunc(pre_y, train_target)
             loss_total+=loss.item()
@@ -59,6 +63,8 @@ def model_training(model, trainDL, testDL, optimizer, epoch: int, LIMIT: int, br
         model.eval()
         with torch.no_grad():
             for val_feature, val_target in testDL:
+                val_feature.to(device)
+                val_target.to(device)
                 # 학습
                 pre_val= model(val_feature)
 
@@ -100,14 +106,12 @@ def model_training(model, trainDL, testDL, optimizer, epoch: int, LIMIT: int, br
         # 학습 진행 모니터링 (검증 데이터 개선이 되지 않았을때 누적 ->  평가, 손실 중 지표 하나 선택)
         # 최적화 스케쥴러 인스턴스 업데이트
         scheduler.step(score_val_total/len(testDL))
-        # print(f'scheduler.num_bad_epochs: {scheduler.num_bad_epochs}', end=' ') #보여주기용
-        # print(f'scheduler.patience: {scheduler.patience}')
         # 손실 감소 (또는 성능 개선)이 안되는 경우 조기종료
         if scheduler.num_bad_epochs== scheduler.patience:
             print(f'{scheduler.patience} EPOCH 성능 개선이 없어서 조기종료함')
             break
 
-        return LOSS_HISTORY, SCORE_HISTORY
+    return LOSS_HISTORY, SCORE_HISTORY, ep
     
 
 def draw_result(EPOCH:int, LOSS_HISTORY, SCORE_HISTORY):

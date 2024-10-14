@@ -161,8 +161,8 @@ def version_check(module_list: list):
     모듈의 버전을 확인하는 함수
     '''
     
-    for modul in module_list:
-        print(modul.__version__)
+    for module in module_list:
+        print(module.__version__)
 
 def show_outliers(DF, colname: str):
     '''

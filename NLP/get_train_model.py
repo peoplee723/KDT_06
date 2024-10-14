@@ -1,4 +1,4 @@
-from get_model import Custom_model
+from NLP.get_DNNmodel import Custom_model
 from torchmetrics.classification import F1Score, MulticlassF1Score
 import torch.nn as nn
 import torch.nn.functional as F
@@ -94,11 +94,11 @@ def model_training(model, trainDL, testDL, optimizer, epoch: int, LIMIT: int,
                 save_type=model.state_dict()
             if len(SCORE_HISTORY[1]) == 1: 
             #첫번째는 무조건 저장
-                torch.save(save_type, SAVE_PATH+SAVE_FILE+str(ep))  
+                torch.save(save_type, SAVE_PATH+str(ep)+SAVE_FILE)  
                 
             else:
                 if SCORE_HISTORY[1][-1]> max(SCORE_HISTORY[1][:-1]): # 자신을 제외한 최대점수값과 비교
-                    torch.save(save_type, SAVE_PATH+SAVE_FILE+str(ep)) #에포크값으로 저장
+                    torch.save(save_type, SAVE_PATH+str(ep)+SAVE_FILE) #에포크값으로 저장
                      
         else: pass
 
