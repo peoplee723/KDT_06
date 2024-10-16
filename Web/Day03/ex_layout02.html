@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & TAG</title>
+    <!-- 내부 CSS 설정 -->
+     <style>
+        /* 기본적인 웹 페이지 레이아웃 */
+        * {text-align: center;}
+        html {height: 100%;
+            margin: 0;}
+        body {height: 100%;}
+        header {background-color: rgba(34, 139, 34, 0.352);
+            height: 10%;
+            border-bottom: 0.3cm solid rgba(0, 0, 0, 0.694);}
+        /* menu, center, side가 한 줄에 나오도록 */
+        /* menu */
+        nav {background-color: rgba(24, 72, 215, 0.292);
+            width: 20%;
+            height: 80vh;
+            float: left;
+            margin: 0;
+            text-align: left;
+        }
+        /* center */
+        section {background-color: rgba(212, 206, 206, 0.9);
+            display: inline-block;
+            width: 60%;
+            height: 80vh;
+            margin: 0;
+
+            
+        }
+        section>div {border: 0.3cm outset;}
+        /* side */
+        aside {background-color: skyblue;
+            width: 20%;
+            float: right;
+            height: 80vh;
+            margin: 0;
+        }
+
+        footer {background-color: rgba(64, 224, 208, 0.352);
+            clear: both;
+            height: 10vh;
+            margin: 0;
+        }
+        h5 {text-align: left;}
+        li {text-align: left;
+            margin: 0.3cm;
+        }
+     </style>
+</head>
+<body>
+    <!-- <div id="head">HEADER</div>
+    <div id="menu">MENU</div>
+    <div id="center">CENTER</div>
+    <div id="side">SIDE</div>
+    <div id="foot">FOOTER</div> -->
+    <header>
+        <h1>MY PROJECT</h1>
+    </header>
+    <nav>
+        <h4>목록</h4>
+        <ul>
+            <h5>Mini project</h5>
+            <li><a href="#ml">machine-learning</a></li>
+            <li><a href="#dl">deep-learning(PNN)</a></li>
+            <li><a href="#v">vision(CNN)</a></li>
+            <li><a href="#n">natural language(NLP)</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div id='ml'>
+            머신러닝
+        </div>
+        <div id='dl'>
+            딥러닝
+        </div>
+        <div id='v'>
+            비전 처리
+        </div>
+        <div id='n'>
+            자연어 처리
+        </div>
+    </section>
+    <aside>설명/주석</aside>
+    <footer>Copyright 2023. 성윤. All rights reserved.</footer>
+</body>
+</html>
