@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 태그</title>
+</head>
+<body>
+    <h1>태그와 다양한 입력 input태그</h1>
+    <!-- label태그 radio 태그 -->
+     <form>
+        <label> 성별: </label>
+        <!-- 남자를 눌러도 체크가 되도록 -->
+         
+        <input type="radio" name="gender" value="m" id="male"><label for="male">남자</label>
+        <input type="radio" name="gender" value="f" id="female">여자
+        
+        <!-- 서버 전송기능 submit 태그 -->
+         <input type="submit" value="전송">
+     </form>
+
+    <h3>fieldset & legend 태그로 그룹화</h3>
+    <form>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" value="m" id="male">남자
+            <input type="radio" name="gender" value="f" id="female">여자
+        </fieldset>
+    </form>
+</body>
+</html>

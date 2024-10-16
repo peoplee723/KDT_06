@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & SELECTOR</title>
+    <style>
+        /* 태그 이름 {적용할 스타일} */
+        p {
+            background-color: aquamarine;
+        }
+
+        /* 특정 id의 태그에만 적용
+        => #id이름 {적용할 스타일} 
+        +++ id는 중복되면 안됨!!*/
+        #unique {
+            background-color: azure;
+            color: royalblue;
+            font-weight: bold;
+        }
+
+        body {
+            align-content: center;
+            background-image: url(../Day01/wow.jpg);}
+        /* 특정 클래스의 태그에만 적용
+        => .클래스이름 {적용할 스타일} */
+        .mon {
+            background-color: blueviolet;
+            align-content: 29;
+        }
+        /* 여러 종류의 태그를 묶어서 적용
+        태그1, 태그2, 태그3 {적용할 스타일} */
+        h1, h2, h3 {background-color: royalblue;}
+    </style>
+</head>
+
+<body>
+    <h3> 스타일 적용</h3>
+    <!-- HTML 태그를 예쁘게 스타일링해주는 역할 CSS -->
+    <p>
+        오늘은 화요일 입니다<br>
+        비오는 화요일 입니다
+    </p>
+    <!-- style속성은 적용/수정 시 일일이 지정해 줘야함 ->번거로움
+      ==> 한번에 해결하자: head태그 안에 style 태그를 활용에 일정 태그에 일괄 적용 -->
+    <p id="unique">
+        내일은 수요일 입니다
+    </p>
+    <p>
+        어제는 월요일 입니다
+    </p>
+    <p class="mon">
+        어제는 월요일 입니다
+    </p>
+    <p class="mon">
+        어제는 월요일 입니다
+    </p>
+    <p class="mon">
+        어제는 월요일 입니다
+    </p>
+    <p class="mon">
+        어제는 월요일 입니다
+    </p>
+    <p class="mon">
+        어제는 월요일 입니다
+    </p>
+
+</body>
+
+</html>

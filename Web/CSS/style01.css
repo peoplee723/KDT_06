@@ -1,0 +1,27 @@
+
+/* 태그 이름 {적용할 스타일} */
+p {
+    background-color: aquamarine;
+}
+
+/* 특정 id의 태그에만 적용
+=> #id이름 {적용할 스타일} 
++++ id는 중복되면 안됨!!*/
+#unique {
+    background-color: azure;
+    color: royalblue;
+    font-weight: bold;
+}
+
+body {
+    align-content: center;
+    background-image: url(../Day01/wow.jpg);}
+/* 특정 클래스의 태그에만 적용
+=> .클래스이름 {적용할 스타일} */
+.mon {
+    background-color: blueviolet;
+    align-content: 29;
+}
+/* 여러 종류의 태그를 묶어서 적용
+태그1, 태그2, 태그3 {적용할 스타일} */
+h1, h2, h3 {background-color: royalblue;}

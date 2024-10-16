@@ -1,0 +1,21 @@
+
+
+
+body {
+    background-color: rgb(97, 110, 147);
+    font-family: serif;
+    color: black;
+}
+
+body {background-color: royalblue;}
+
+
+h1 {
+    border-bottom: 1px solid gray;
+    color: red;
+}
+
+em {color: red;}
+
+p.first {color: green;}
+p.second {color: blue;}

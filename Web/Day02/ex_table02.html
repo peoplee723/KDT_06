@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블2</title>
+</head>
+<body>
+    <h3>테이블</h3>
+    <!-- 상품 목록 테이블 -->
+     <table border="3">
+        <tr>
+            <td>1</td>
+            <td>사과</td>
+            <!-- 아래 행과 합침 (자신을 포함한 합칠 셀의 개수) -->
+            <td rowspan="2">10</td>
+            <td rowspan="2">1000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>탄산수</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>배</td>
+            <td>10</td>
+            <td>11000</td>
+        </tr>
+        <tr>
+            <td>총합</td>
+            <!-- 옆 행과 합침 (자신을 포함한 합칠 셀의 개수) -->
+            <td colspan="3">13000</td>
+        </tr>
+     </table>
+</body>
+</html>

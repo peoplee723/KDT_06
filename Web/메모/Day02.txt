@@ -1,0 +1,48 @@
+Day02
+
+shift+alt+f => 단락 자동맞춤정렬
+
+- 태그 지정 방법
+태그
+#id이름
+.클래스이름
+태그1, 태그2, 태그3
+태그:속성
+태그[속성이름=속성값]
+
+- 외부 css파일 스타일 불러오기
+<link type="text/css" rel="stylesheet" href="css경로">
+
+외부 < 내부 < 인라인 순으로 스타일 지정됨
+
+++브라우저에서 기본적으로 지정하는 태그 스타일이 존재-> 사용자가 지정시 무시됨
+
+
+
+
+input -> min& maxlength, name, placeholder, autofocus, rows, cols, 
+
+
+
+html 태그
+hr(수평선), fieldset, legend, input -> placeholder, select-option-optgroup
+colspan, rowspan table - th - tr - td
+
+arXiv, Hotchips, preceeding of ieee
+---------------------------------------------------------------------------------------
+모빌린트 대표 신동주
+
+AI 기술 가파르게 발전 but, 보급률 수익이 저조
+Why? 비용 대비 성능 비율이 안맞음 
+	특히, 온디바이스 제품들 ->  열, 전력 관리 중요
+=> 가성비 맞추기 위한 딥러딩 맞춤 NPU
+
+
+자율, 시큐리티, 스마트 팩토리 등등 =>온디바이스 AI + Edge 데이터센터
+
+민감정보의 경우 내부이용자가 제품을 활용하여 AI도입하는 방식
+
+
+좋은 모델 특징
+-> 범용성, 효율, 성능
+
