@@ -5,3 +5,13 @@ Pytorch/models
 Pytorch/project/brfss2013.csv
 Pytorch/data/
 Vision/project/FLASK/
+ML/Day09/ML_model.pkl
+NLP/project/vocab.pikle
+Web/project/vocab.pikle
+Web/project/cgi-bin/vocab.pikle
+Web/project/model/dl/health_wbs.pth
+Web/project/model/ml/ML_model.pikle
+Web/project/model/ml/ML_model.pkl
+Web/project/model/nlp/vocab.pikle
+Web/project/model/vision/model_final.pth
+Web/project/model/nlp/try_6.pth
