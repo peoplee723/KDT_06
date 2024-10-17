@@ -29,7 +29,7 @@ def showHTML(data, msg):
     <html lang="en">
      <head>
       <meta charset="UTF-8">
-      <title>---건강 점수 측정---</title>
+      <title>---점수 예측---</title>
      </head>
      <body>
       <form>

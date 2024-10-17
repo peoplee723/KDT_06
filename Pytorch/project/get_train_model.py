@@ -107,7 +107,7 @@ def model_training(model, trainDL, testDL, optimizer, epoch: int, LIMIT: int, br
             print(f'{scheduler.patience} EPOCH 성능 개선이 없어서 조기종료함')
             break
 
-        return LOSS_HISTORY, SCORE_HISTORY
+    return LOSS_HISTORY, SCORE_HISTORY
     
 
 def draw_result(EPOCH:int, LOSS_HISTORY, SCORE_HISTORY):

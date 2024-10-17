@@ -57,7 +57,7 @@ def detectLang(text, model):
 
     #단어사전을 통한 벡터화
     # 단어사전 불러오기
-    with open('vocab.pikle', 'rb') as f:
+    with open('vocab_model.pikle', 'rb') as f:
         vocab=pickle.load(f)
     # 벡터화
     vec_token= vectorize2(vocab=vocab, DF=token_text, tokenizer=tokenizer)
@@ -90,7 +90,7 @@ if SCRIPT_MODE:
 SAVE_PATH= r'C:\Users\KDP-25\Desktop\test\Web\project\model\nlp'
 
 # 저장 파일명
-SAVE_MODEL = SAVE_PATH+r'\try_6.pth'
+SAVE_MODEL = SAVE_PATH+r'\model.pth'
 
 if os.path.exists(SAVE_MODEL):
    model= torch.load(SAVE_MODEL, weights_only=False)

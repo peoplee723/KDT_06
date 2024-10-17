@@ -15,3 +15,5 @@ Web/project/model/ml/ML_model.pkl
 Web/project/model/nlp/vocab.pikle
 Web/project/model/vision/model_final.pth
 Web/project/model/nlp/try_6.pth
+Web/project/model/nlp/vocab_model.pikle
+Web/project/model/nlp/model.pth
