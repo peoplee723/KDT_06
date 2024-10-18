@@ -36,7 +36,7 @@ def showHTML(text, msg):
          </head>
          <body>
           <form>
-            <textarea name="text" rows="10" colos="10" >{text}</textarea>
+            <textarea name="text" rows="30" cols="100" >{text}</textarea>
             <p><input type="submit" value="기사 감지">{msg}</p>
           </form>
          </body>
@@ -57,7 +57,7 @@ def detectLang(text, model):
 
     #단어사전을 통한 벡터화
     # 단어사전 불러오기
-    with open('vocab_model.pikle', 'rb') as f:
+    with open('vocab.pikle', 'rb') as f:
         vocab=pickle.load(f)
     # 벡터화
     vec_token= vectorize2(vocab=vocab, DF=token_text, tokenizer=tokenizer)
@@ -69,15 +69,14 @@ def detectLang(text, model):
     token_torch=torch.FloatTensor(vec_token).long()
     
     # 판별
-    result_idx=['교육', '환경', '음식/의료']
+    result_idx=['음식/의료', '환경','교육']
     model.eval()
     with torch.no_grad():
         result= predict_mcf2(model=model, data= token_torch, result=result_idx)
 
     # 판별요청 & 결과 반환 ===> 개인이 만든 함수의 predict 넣기
     
-    return result #langDict[result[0]]
-
+    return result 
 
 
 # 기능 구현 ------------------------------------------------

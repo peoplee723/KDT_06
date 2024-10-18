@@ -29,8 +29,9 @@ def predict_mcf(model, data, result):
     dataTS=torch.FloatTensor(data).reshape(1,-1)
     pre_val=model(dataTS)
     pre_val=F.softmax(pre_val, dim=1)
-    print(f'{result[0]}: {max(pre_val[0].detach()):.4f}')
-    return f'{result[0]}: {max(pre_val[0].detach()):.4f}'
+    num=pre_val.argmax(dim=1)
+    print(f'{result[num]}: {max(pre_val[0].detach()):.4f}')
+    return f'{result[num]}: {max(pre_val[0].detach()):.4f}'
 
 
 class make_model(nn.Module):
