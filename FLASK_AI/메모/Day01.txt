@@ -1,0 +1,46 @@
+Day01
+
+
+일시적으로 앱 구동
+set FLASK_APP=my_app.py
+
+
+책에 있는 리눅스 명령어 -> 알기 힘듦
+python_dot-> .env파일을 통해 환경변수 설정
+
+
+권장 형태
+https://flask.palletsprojects.com/en/3.0.x/tutorial/layout/
+/home/user/Projects/flask-tutorial
+├── flaskr/
+│   ├── __init__.py
+│   ├── db.py
+│   ├── schema.sql
+│   ├── auth.py
+│   ├── blog.py
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── auth/
+│   │   │   ├── login.html
+│   │   │   └── register.html
+│   │   └── blog/
+│   │       ├── create.html
+│   │       ├── index.html
+│   │       └── update.html
+│   └── static/
+│       └── style.css
+├── tests/
+│   ├── conftest.py
+│   ├── data.sql
+│   ├── test_factory.py
+│   ├── test_db.py
+│   ├── test_auth.py
+│   └── test_blog.py
+├── .venv/
+├── pyproject.toml
+└── MANIFEST.in
+
+
+
+### 언제나 실행은 env파일 위치 기준!!!!
+

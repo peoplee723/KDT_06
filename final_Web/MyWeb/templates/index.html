@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 목록</title>
+    <!-- 내부 CSS 설정 -->
+     <style>
+        /* 기본적인 웹 페이지 레이아웃 */   
+        * {text-align: center;}
+        html {height: 100%;
+            margin: 0;}
+        body {height: 100%;}
+        header {background-color: rgba(34, 139, 34, 0.352);
+            height: 10%;
+            border-bottom: 0.3cm solid rgba(0, 0, 0, 0.694);}
+        /* menu, center, side가 한 줄에 나오도록 */
+        /* menu */
+        nav {background-color: rgba(24, 72, 215, 0.292);
+            width: 20%;
+            height: 80vh;
+            float: left;
+            margin: 0;
+            text-align: left;
+        }
+        nav img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+        /* center */
+        section {background-color: rgba(212, 206, 206, 0.9);
+            display: inline-block;
+            width: 60%;
+            height: 80vh;
+            margin: 0;
+        }
+        section>div {border: 0.3cm outset;}
+        a:hover {color: rgb(156, 156, 210);}
+        /* side */
+        aside {background-color: skyblue;
+            width: 20%;
+            float: right;
+            height: 80vh;
+            margin: 0;
+        }
+
+        footer {background-color: rgba(64, 224, 208, 0.352);
+            clear: both;
+            height: 10vh;
+            margin: 0;
+        }
+        h5 {text-align: left;}
+        li {text-align: left;
+            margin: 0.3cm;
+        }
+        nav ul {
+            list-style-type: none;
+        }
+        
+     </style>
+</head>
+<body>
+    <header>
+        <h1>MY PROJECT</h1>
+    </header>
+    <nav>
+        <h4>목록</h4>
+        <ul>
+            <h5>Mini project</h5>
+            <li><a href="#ml"><img src="{{ url_for('static',filename='images/ML.png') }}" alt="ml icon">machine-learning</a></li>
+            <li><a href="#dl"><img src="{{ url_for('static',filename='images/DNN.png') }}" alt="dl icon">deep-learning(PNN)</a></li>
+            <li><a href="#v"><img src="{{ url_for('static',filename='images/RNN.png') }}" alt="rnn icon">vision(CNN)</a></li>
+            <li><a href="#n"><img src="{{ url_for('static',filename='images/NLP.png') }}" alt="nlp icon">natural language(NLP)</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div id='ml'>
+            머신러닝<hr>
+
+            <a href="http://localhost:8080/cgi-bin/ML.py" target="_blank">머신러닝 테스트</a>
+        </div>
+        <div id='dl'>
+            딥러닝<hr>
+            딥러닝 모델 테스트
+            <a href="http://localhost:8080/cgi-bin/DL.py" target="_blank">딥러닝</a>
+        </div>
+        <div id='vison'>
+            비전 처리<hr>
+            비전 처리 모델 테스트
+            <a href="http://127.0.0.1:5000" target="_blank">비전 처리</a>
+        </div>
+        <div id='nlp'>
+            자연어 처리<hr>
+
+                자연어 처리 모델 테스트
+                <a href="http://localhost:8080/cgi-bin/NLP.py" target="_blank">자연어 처리 모델 테스트</a>
+
+        </div>
+    </section>
+    <aside>설명/주석</aside>
+    <footer>Copyright 2023. 성윤. All rights reserved.</footer>
+</body>
+</html>
