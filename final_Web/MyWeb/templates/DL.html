@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>---건강 점수 측정---</title>
+       </head>
+       <body>
+        <form>
+          <input type='text' name='q0' placeholder='나이' value='{data[0]}'><br/>
+          <input type='text' name='q1' placeholder='키' value='{data[1]}'><br/>
+          <input type='text' name='q2' placeholder='몸무게' value='{data[2]}'><br/>
+          <input type='text' name='q3' placeholder='평균 수면 시간' value='{data[3]}'><br/>
+          <input type='text' name='q4' placeholder='흡연 여부(예=1, 아니요=0)' value='{data[4]}'><br/>
+          <input type='text' name='q5' placeholder='한달 평균 음주 횟수' value='{data[5]}'><br/>
+          <input type='text' name='q6' placeholder='하루 평균 과일 섭취 횟수' value='{data[6]}'><br/>
+          <input type='text' name='q7' placeholder='하루 평균 채소 섭취 횟수' value='{data[7]}'><br/>
+          <input type='text' name='q8' placeholder='한달 평균 운동 횟수' value='{data[8]}'><br/>
+          <p><input type="submit" value="결과보기"></p>
+          <p>{msg}</p>
+        </form>
+       </body>
+      </html>

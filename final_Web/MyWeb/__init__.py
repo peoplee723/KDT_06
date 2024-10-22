@@ -17,13 +17,6 @@ def create_app():
     @APP.route('/info')
     @APP.route('/info/')
 
-    # http://127.0.0.1:5000/info
-    def info():
-        return '''
-        <body style='background-color: skyblue; text-align: center'>
-        <h1>INFORMATION</h1>
-        </body>'''
-
 
 
     
@@ -31,19 +24,26 @@ def create_app():
     @APP.route('/main')
     def mainpage():
         return render_template('index.html')
-
-
-    # f'''
-    #     <body style='background-color: skyblue; text-align: center'>
-    #         <h1>{age}'s INFORMATION</h1>
-    #         hello ~~ I'm {age} years old!
-    #     </body>
-    #     '''
-
-    # http://127.0.0.1:5000/info/숫자변수(age)
-    @APP.route('/go')
-    def gohome():
-        return APP.redirect('./info')
+    
+    # ML화면 이동
+    @APP.route('/ml')
+    def ml_page():
+        return render_template('ML.html')
+    
+    # DL화면 이동
+    @APP.route('/dl')
+    def dl_page():
+        return render_template('DL.html')
+    
+    # vision화면 이동
+    @APP.route('/vision')
+    def vision_page():
+        return render_template('vision.html')
+    
+    # nlp화면 이동
+    @APP.route('/nlp')
+    def nlp_page():
+        return render_template('nlp.html')
 
 
     # html과 연결

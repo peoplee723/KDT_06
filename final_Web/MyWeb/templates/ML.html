@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험 통과 예측</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>---통과 예측---</title>
+    </head>
+       <body>
+        <form>
+          <input type='text' name='q0' placeholder='주당 공부 시간' value='{data[0]}'><br/>
+          <input type='text' name='q1' placeholder='출석률' value='{data[1]}'><br/>
+          <input type='text' name='q2' placeholder='이전 학기 성적' value='{data[2]}'><br/>
+          <input type='text' name='q3' placeholder='부모 학력' value='{data[3]}'><br/>
+          <input type='text' name='q4' placeholder='사교육 여부(예=1, 아니요=0)' value='{data[4]}'><br/>
+          <p><input type="submit" value="결과보기"></p>
+          <p>{msg}</p>
+        </form>
+       </body>
+</html>
