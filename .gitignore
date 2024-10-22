@@ -17,3 +17,8 @@ Web/project/model/vision/model_final.pth
 Web/project/model/nlp/try_6.pth
 Web/project/model/nlp/vocab_model.pikle
 Web/project/model/nlp/model.pth
+Personal_project/
+Personal_project/link.csv
+Personal_project/answer.csv
+Personal_project/question.csv
+Personal_project/kin.csv

@@ -12,44 +12,12 @@ from flask import Flask, render_template
 def create_app():
     APP=Flask(__name__)
 
-    # 라우팅 기능 함수
-    # @서버 인스턴스 변수명.route('url')
-    @APP.route('/info')
-    @APP.route('/info/')
-    # http://127.0.0.1:5000/info
-    def info():
-        return '''
-        <body style='background-color: skyblue; text-align: center'>
-        <h1>INFORMATION</h1>
-        </body>'''
+    # 라우팅 기능 모듈
+    from .views import main_view
 
-
-    # http://127.0.0.1:5000/info/변수
-    @APP.route('/info/<name>')
-    def ageinfo(name):
-        return render_template('index.html', name=name)
-
-
-    # f'''
-    #     <body style='background-color: skyblue; text-align: center'>
-    #         <h1>{age}'s INFORMATION</h1>
-    #         hello ~~ I'm {age} years old!
-    #     </body>
-    #     '''
-
-    # http://127.0.0.1:5000/info/숫자변수(age)
-    @APP.route('/go')
-    def gohome():
-        return APP.redirect('./info')
-
-
-    # html과 연결
-    @APP.route('/')
-    def index():
-        return render_template('index.html')
+    # views에서 처리한 라우팅 불러 오기
+    APP.register_blueprint(main_view.main_bp)
     return APP
-
-
 # 조건부 실행
 if __name__ == '__main__':
     app=create_app()

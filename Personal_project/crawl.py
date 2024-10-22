@@ -47,11 +47,6 @@ from urllib.parse import quote
 
 
 
-# 뉴스기간 2024-01-01 ~ 2024-09-30
-time_list=[]
-for a in range(1,5):
-    time_list.append(a)
-
 def get_links(time_list):
     '''
     뉴스 링크 가져오는 함수
@@ -67,26 +62,29 @@ def get_links(time_list):
         for j in jar2:
             link= j.get('href')
             article_link_list.append(link)
+            # print(link)
         if time%100==0:
             print(time)
     return article_link_list
 
-
+time_list=[]
+for a in range(1,2400):
+    time_list.append(a)
 # 링크 크롤링
 links=get_links(time_list)
+
 # 데이터프레임으로 변환 후 csv로 저장
 linkDF=pd.DataFrame()
 linkDF['link']=links
 linkDF.to_csv('./link.csv')
-print(links[0], len(links))
+print(len(links))
 
 def get_QNA(links):
-    article_link_list=[]
+    q_list=[]
+    a_list=[]
     for i in links:
-        q_list=[]
-        a_list=[]
 
-        link=f'https://kin.naver.com/qna/detail.naver?d1id=4&dirId=40301&docId=475082194&qb=7ZmI7YOd7Iqk&enc=utf8§ion=kin.qna_ency&rank=1&search_sort=0&spq=0'
+        link=i
         encoded_link = quote(link, safe=':/?=&')
         request = urllib.request.Request(encoded_link)
         url= urlopen(request)
@@ -98,6 +96,8 @@ def get_QNA(links):
         jar2= soup.find('div',{'class':"questionDetail"})
         # print(jar2.get_text(strip=True), type(jar2))
         q= (jar2.get_text(strip=True))
+        # print(q)
+        q_list.append(q)
         # 대답 추출
         jar3= soup.find_all('div', {'class': 'se-main-container'})
         # print(jar3[1].get_text(), len(jar3))
@@ -106,24 +106,27 @@ def get_QNA(links):
             text=jar3[i].get_text(strip=True)
             a.append(text.replace('\u200b', ''))
         # 추출한 텍스트 리스트에 추가
-    a_list.append(a)
-    q_list.append(q)
-    if i%100==0: print(i)
+        a_list.append(a)
+        if i%100==0: print(i)
+    print(len(a_list))
+    print(len(q_list))
+
     return a_list, q_list
     # print(texts)
 
 
 
-a_list, q_list=get_QNA(links)
+a, q=get_QNA(links)
 # 혹시 모르니 따로도 저장
 answer, question=pd.DataFrame(), pd.DataFrame()
-answer['answer']=a_list
-question['question']=q_list
+answer['answer']=a
+question['question']=q
 answer.to_csv('./answer.csv')
 question.to_csv('./question.csv')
+
 # 하나의 DF로 묶어서 저장
 kin=pd.DataFrame()
 kin['link']=links
-kin['question']=a_list
-kin['answer']=a_list
+kin['question']=q
+kin['answer']=a
 kin.to_csv('./kin.csv')
