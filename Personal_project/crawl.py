@@ -71,19 +71,18 @@ time_list=[]
 for a in range(1,2400):
     time_list.append(a)
 # 링크 크롤링
-links=get_links(time_list)
+# links=get_links(time_list)
 
-# 데이터프레임으로 변환 후 csv로 저장
-linkDF=pd.DataFrame()
-linkDF['link']=links
-linkDF.to_csv('./link.csv')
-print(len(links))
+# # 데이터프레임으로 변환 후 csv로 저장
+# linkDF=pd.DataFrame()
+# linkDF['link']=links
+# linkDF.to_csv('./link.csv')
+# print(len(links))
 
 def get_QNA(links):
-    q_list=[]
-    a_list=[]
+    kin_list=[[], []]
+    count=1
     for i in links:
-
         link=i
         encoded_link = quote(link, safe=':/?=&')
         request = urllib.request.Request(encoded_link)
@@ -97,36 +96,50 @@ def get_QNA(links):
         # print(jar2.get_text(strip=True), type(jar2))
         q= (jar2.get_text(strip=True))
         # print(q)
-        q_list.append(q)
+        kin_list[0].append(q)
         # 대답 추출
         jar3= soup.find_all('div', {'class': 'se-main-container'})
-        # print(jar3[1].get_text(), len(jar3))
+        # print(jar3[0].get_text(), len(jar3))
         a=[]
-        for i in range(len(jar3)):
-            text=jar3[i].get_text(strip=True)
+        for j in range(len(jar3)):
+            text=jar3[j].get_text(strip=True)
             a.append(text.replace('\u200b', ''))
+            # print(text)
         # 추출한 텍스트 리스트에 추가
-        a_list.append(a)
-        if i%100==0: print(i)
-    print(len(a_list))
-    print(len(q_list))
+        kin_list[1].append(a)
+        if count%100==0: print(count)
+        count+=1
+    print(len(kin_list[0]))
+    print(len(kin_list[1]))
 
-    return a_list, q_list
+    return kin_list
     # print(texts)
 
 
+links=pd.read_csv('link.csv')
+try:
+    kin =get_QNA(links['link'])
+except Exception as e:
+    print(e)
 
-a, q=get_QNA(links)
-# 혹시 모르니 따로도 저장
-answer, question=pd.DataFrame(), pd.DataFrame()
-answer['answer']=a
-question['question']=q
-answer.to_csv('./answer.csv')
-question.to_csv('./question.csv')
+# 혹시 모르니 따로도 저장 (0 질문, 1 대답)
+# with open('answer.csv', mode='a', newline='') as f:
+#     writer=csv.writer(f)
+#     writer.writerows(kin[1])
+# with open('question.csv', mode='a', newline='') as f:
+#     writer=csv.writer(f)
+#     writer.writerows(kin[0])
+# 따로 저장
+# q, a= pd.DataFrame(), pd.DataFrame()
+# q['question']=kin[0]
+# a['answer']=kin[1]
+# q.to_csv('question.csv')
+# a.to_csv('answer.scv')
 
 # 하나의 DF로 묶어서 저장
 kin=pd.DataFrame()
-kin['link']=links
-kin['question']=q
-kin['answer']=a
+kin['link']=links['link']
+
+kin['question']=kin[0]
+kin['answer']=kin[1]
 kin.to_csv('./kin.csv')

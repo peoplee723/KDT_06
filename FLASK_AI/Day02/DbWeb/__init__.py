@@ -4,7 +4,13 @@
 # 모듈 로딩
 from flask import Flask
 
+# DB관련 설정
+import config
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
+DB=SQLAlchemy()     #DB 생성
+MIGRATE=Migrate()   #DB 컨트롤
 
 
 # application 생성 함수
@@ -26,6 +32,16 @@ def create_app():
     # @APP.route('/', endpoint='INDEX')
     # def printPage():
     #     return '<h1>Hello~</h1>'    
+
+    # DB 관련 초기화 설정  (p.51)
+    APP.config.from_object(config)
+
+    # DB 초기화 및 연동 (플라스크와 연동)
+    DB.init_app(APP)
+    MIGRATE.init_app(APP, DB)
+
+    # DB 클래스 정의 모듈 로딩
+    from .models import models
 
     # blueprint 사용시 URL 처리 무듈 등록만 하면 됨 (처리 영역을 분리시킴)
     # URL 처리 모듈 등록
