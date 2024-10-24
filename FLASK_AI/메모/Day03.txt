@@ -1,0 +1,19 @@
+Day03
+
+조건문 태그
+{% if 조건문 %}
+	<p></p>
+elif, else 도 형태 동일
+{% endif %} (반드시 닫아줘야함)
+
+반복문 태그
+{% for item in list %}
+	<p>순서: {{loop.index}} </p>
+	<p>{{item}}</p>
+{% endfor %} (반드시 닫아줘야 함)
+
+++ loop 속성
+- loop.index: 1-> 1씩 증가
+- loop.index0: 0-> 1씩 증가
+- loop.first-> 첫번째 순서이면 True
+- loop.last-> 마지막 순서이면 True

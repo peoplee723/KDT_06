@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <thead>질문 게시판</thead>
+    <table border="solid">
+    <tr>
+        <th>아이디</th>
+        <th>제목</th>
+        <th>작성날짜</th>
+    </tr>
+    {% if question_list %}
+    <tr>
+        {% for question in question_list %}
+            <li> <a href="{{url_for('question.detail', question_id= question.id)}}">{{qusetion.subject}}</a></li>
+    </tr>
+        {% endfor %}
+    {% else %}
+        <td colspan="3" class="msg">등록된 질문이 없습니다</td>
+    {% endif %}
+    
+</table>
+</body>
+</html>

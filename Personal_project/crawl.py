@@ -1,4 +1,3 @@
-# 네이버 검색 API 예제 - 블로그 검색
 import os
 import sys
 import urllib.request
@@ -8,37 +7,8 @@ from collections import Counter
 # from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import pandas as pd
-import time
-import numpy as np
-from PIL import Image
-import re
-import csv
 from urllib.parse import quote
 
-
-# client_id = "vAcuTP8HYLTwb34u12a0"
-# client_secret = "NwFeqYc5YY"
-# encText = urllib.parse.quote("홈택스")
-# # url = "https://openapi.naver.com/v1/search/kin/display=100?query=" + encText # JSON 결과
-# url = "https://openapi.naver.com/v1/search/kin.xml?query=" + encText+'&display=100&start=100' # XML 결과
-# request = urllib.request.Request(url)
-# request.add_header("X-Naver-Client-Id",client_id)
-# request.add_header("X-Naver-Client-Secret",client_secret)
-# response = urllib.request.urlopen(request)
-# rescode = response.getcode()
-
-# link_list=[]
-# if(rescode==200):
-#     response_body = response.read().decode('utf-8')
-#     body= BeautifulSoup(response_body, "lxml-xml")
-#     jar= body.find_all('link')
-#     for j in range(1, len(jar)):
-#         link= jar[j].get_text()
-#         print(link, end='\n')
-#         link_list.append(link)
-#     print(len(link_list))
-# else:
-#     print("Error Code:" + rescode)
 
 # 질문
 # div.questionDetail
@@ -107,7 +77,7 @@ def get_QNA(links):
             # print(text)
         # 추출한 텍스트 리스트에 추가
         kin_list[1].append(a)
-        if count%100==0: print(count)
+        # if count%100==0: print(count)
         count+=1
     print(len(kin_list[0]))
     print(len(kin_list[1]))
@@ -130,11 +100,11 @@ except Exception as e:
 #     writer=csv.writer(f)
 #     writer.writerows(kin[0])
 # 따로 저장
-# q, a= pd.DataFrame(), pd.DataFrame()
-# q['question']=kin[0]
-# a['answer']=kin[1]
-# q.to_csv('question.csv')
-# a.to_csv('answer.scv')
+q, a= pd.DataFrame(), pd.DataFrame()
+q['question']=kin[0]
+a['answer']=kin[1]
+q.to_csv('question.csv', index=False)
+a.to_csv('answer.csv', index=False)
 
 # 하나의 DF로 묶어서 저장
 kin=pd.DataFrame()

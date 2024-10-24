@@ -13,3 +13,7 @@ main_bp= Blueprint('main', '__name__', url_prefix='/', template_folder='template
 @main_bp.route('/', endpoint='hello')
 def index():
     return render_template('index.html')
+
+@main_bp.route('/qlist')
+def printlist():
+    return render_template('question_list.html')
