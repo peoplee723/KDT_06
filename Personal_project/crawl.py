@@ -38,7 +38,7 @@ def get_links(time_list):
     return article_link_list
 
 time_list=[]
-for a in range(1,2400):
+for a in range(1,2000):
     time_list.append(a)
 # 링크 크롤링
 # links=get_links(time_list)
