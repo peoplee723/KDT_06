@@ -16,7 +16,7 @@ from urllib.parse import quote
 # answer_1 > div.answerDetail._endContents._endContentsText
 
 
-
+# 연말정산: %EC%97%B0%EB%A7%90%EC%A0%95%EC%82%B0
 def get_links(time_list):
     '''
     뉴스 링크 가져오는 함수
@@ -24,7 +24,7 @@ def get_links(time_list):
     '''
     article_link_list=[]
     for time in time_list:
-        url= urlopen(f'https://kin.naver.com/search/list.naver?query=%ED%99%88%ED%83%9D%EC%8A%A4&page={time}')
+        url= urlopen(f'https://kin.naver.com/search/list.naver?query=%EC%97%B0%EB%A7%90%EC%A0%95%EC%82%B0={time}')
         soup= BeautifulSoup(url, 'html.parser')
 
 
@@ -37,10 +37,10 @@ def get_links(time_list):
             print(time)
     return article_link_list
 
-time_list=[]
-for a in range(1,2000):
-    time_list.append(a)
-# 링크 크롤링
+# time_list=[]
+# for a in range(1,500):
+#     time_list.append(a)
+# # 링크 크롤링
 # links=get_links(time_list)
 
 # # 데이터프레임으로 변환 후 csv로 저장
@@ -50,7 +50,7 @@ for a in range(1,2000):
 # print(len(links))
 
 def get_QNA(links):
-    kin_list=[[], []]
+    a_list, q_list=[],[]
     count=1
     for i in links:
         link=i
@@ -66,7 +66,7 @@ def get_QNA(links):
         # print(jar2.get_text(strip=True), type(jar2))
         q= (jar2.get_text(strip=True))
         # print(q)
-        kin_list[0].append(q)
+        q_list.append(q)
         # 대답 추출
         jar3= soup.find_all('div', {'class': 'se-main-container'})
         # print(jar3[0].get_text(), len(jar3))
@@ -76,21 +76,20 @@ def get_QNA(links):
             a.append(text.replace('\u200b', ''))
             # print(text)
         # 추출한 텍스트 리스트에 추가
-        kin_list[1].append(a)
+        a_list.append(a)
         # if count%100==0: print(count)
         count+=1
     print(len(kin_list[0]))
     print(len(kin_list[1]))
 
-    return kin_list
+    return q_list, a_list
     # print(texts)
 
 
 links=pd.read_csv('link.csv')
-try:
-    kin =get_QNA(links['link'])
-except Exception as e:
-    print(e)
+
+q_list, a_list =get_QNA(links['link'])
+
 
 # 혹시 모르니 따로도 저장 (0 질문, 1 대답)
 # with open('answer.csv', mode='a', newline='') as f:
@@ -100,16 +99,17 @@ except Exception as e:
 #     writer=csv.writer(f)
 #     writer.writerows(kin[0])
 # 따로 저장
-q, a= pd.DataFrame(), pd.DataFrame()
-q['question']=kin[0]
-a['answer']=kin[1]
-q.to_csv('question.csv', index=False)
-a.to_csv('answer.csv', index=False)
+# q, a= pd.DataFrame(), pd.DataFrame()
+# q['question']=kin[0]
+# a['answer']=kin[1]
+# q.to_csv('question.csv', index=False)
+# a.to_csv('answer.csv', index=False)
 
 # 하나의 DF로 묶어서 저장
+links=pd.read_csv('./link.csv')
 kin=pd.DataFrame()
 kin['link']=links['link']
 
-kin['question']=kin[0]
-kin['answer']=kin[1]
+kin['question']=q_list
+kin['answer']=a_list
 kin.to_csv('./kin.csv')
