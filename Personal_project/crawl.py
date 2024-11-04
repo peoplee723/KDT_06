@@ -87,29 +87,16 @@ def get_QNA(links):
 
 
 links=pd.read_csv('link.csv')
-
-q_list, a_list =get_QNA(links['link'])
-
-
-# 혹시 모르니 따로도 저장 (0 질문, 1 대답)
-# with open('answer.csv', mode='a', newline='') as f:
-#     writer=csv.writer(f)
-#     writer.writerows(kin[1])
-# with open('question.csv', mode='a', newline='') as f:
-#     writer=csv.writer(f)
-#     writer.writerows(kin[0])
-# 따로 저장
-# q, a= pd.DataFrame(), pd.DataFrame()
-# q['question']=kin[0]
-# a['answer']=kin[1]
-# q.to_csv('question.csv', index=False)
-# a.to_csv('answer.csv', index=False)
+try:
+    q, a =get_QNA(links['link'])
+except Exception as e:
+    print(e)
 
 # 하나의 DF로 묶어서 저장
 links=pd.read_csv('./link.csv')
 kin=pd.DataFrame()
 kin['link']=links['link']
 
-kin['question']=q_list
-kin['answer']=a_list
-kin.to_csv('./kin.csv')
+kin['question']=q
+kin['answer']=a
+kin.to_csv('./kin_3.csv', index=False)
