@@ -1,0 +1,31 @@
+보충 Day01
+
+machine learning ensemble model
+
+
+bagging (bootsrap aggregating)
+
+boosting
+이전 학습 결과의 오답에 대한 가중치 부여 -> 가중치를 반영하여 학습 진행
+(AdaBoost, GradiantBoost, XGBoost, LightGBM)
+
+GBM(p.221) -> 높은 성능 but, 긴 학습 시간
+
+XGBoost, LightBGM -> 따로 설치 필요
+
+XGBoost 병렬 수행으로 시간 개선
+
+
+LightGBM BGM 학습 시간 개선 + 메모리 사용량 감소 + GPU 지원
+
+
+Wrapper class?
+기본 데이터 클래스(int,float,char)은 따로 선언하지 않고 아용
+But, 섞어서 사용할 때 통일된 사용 방법을 만들기 위해 클래스처럼 만들어서 사용 
+(integer, float, string...)
+
+=> LigthBGM은 사이킷런 클래스가 아니지만 사이킷런처럼 사용할 수 있게 클래스로 만듦
+(사이킷런 래퍼 모듈)
+
+
+voting    (RandomForest)
